@@ -671,6 +671,11 @@ module.exports = (env, argv) => {
                     { from: "vector-icons/**", context: path.resolve(__dirname, "res") },
                     { from: "decoder-ring/**", context: path.resolve(__dirname, "res") },
                     { from: "media/**", context: path.resolve(__dirname, "res/") },
+                    {
+                        from: "**/*",
+                        to: "call",
+                        context: path.resolve(__dirname, "node_modules/element-call/dist"),
+                    },
                     { from: "config.json", noErrorOnMissing: true },
                     "contribute.json",
                 ],

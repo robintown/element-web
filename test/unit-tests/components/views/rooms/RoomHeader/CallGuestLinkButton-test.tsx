@@ -86,7 +86,7 @@ describe("<CallGuestLinkButton />", () => {
 
         jest.spyOn(SdkConfig, "get").mockImplementation((key) => {
             if (key === "element_call") {
-                return { guest_spa_url: "https://guest_spa_url.com", url: "https://spa_url.com" };
+                return { guest_spa_url: "https://guest_spa_url.com" };
             }
             return oldGet(key);
         });
@@ -151,13 +151,6 @@ describe("<CallGuestLinkButton />", () => {
         jest.spyOn(room, "getJoinRule").mockReturnValue(JoinRule.Public);
         jest.spyOn(SdkContextClass.instance.roomViewStore, "isViewingCall").mockReturnValue(true);
 
-        jest.spyOn(SdkConfig, "get").mockImplementation((key) => {
-            if (key === "element_call") {
-                return { url: "https://example2.com" };
-            }
-            return oldGet(key);
-        });
-
         getComponent(room);
         // We only change the SdkConfig and show that this everything else is
         // configured so that the call link button is shown.
@@ -165,7 +158,7 @@ describe("<CallGuestLinkButton />", () => {
 
         jest.spyOn(SdkConfig, "get").mockImplementation((key) => {
             if (key === "element_call") {
-                return { guest_spa_url: "https://guest_spa_url.com", url: "https://example2.com" };
+                return { guest_spa_url: "https://guest_spa_url.com" };
             }
             return oldGet(key);
         });

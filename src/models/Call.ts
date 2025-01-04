@@ -33,7 +33,6 @@ import {
 import type EventEmitter from "events";
 import type { ClientWidgetApi, IWidgetData } from "matrix-widget-api";
 import type { IApp } from "../stores/WidgetStore";
-import SdkConfig, { DEFAULTS } from "../SdkConfig";
 import SettingsStore from "../settings/SettingsStore";
 import MediaDeviceHandler, { MediaDeviceKindEnum } from "../MediaDeviceHandler";
 import { timeout } from "../utils/promise";
@@ -699,8 +698,8 @@ export class ElementCall extends Call {
                 .forEach((font) => params.append("font", font));
         }
 
-        const url = new URL(SdkConfig.get("element_call").url ?? DEFAULTS.element_call.url!);
-        url.pathname = "/room";
+        const url = new URL(origin);
+        url.pathname = "/call/";
         const replacedUrl = params.toString().replace(/%24/g, "$");
         url.hash = `#?${replacedUrl}`;
         return url;

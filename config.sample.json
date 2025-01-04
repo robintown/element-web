@@ -43,7 +43,6 @@
         "preferred_domain": "meet.element.io"
     },
     "element_call": {
-        "url": "https://call.element.io",
         "participant_limit": 8,
         "brand": "Element Call"
     },
