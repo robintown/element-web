@@ -49,7 +49,7 @@
         "start": "concurrently --kill-others-on-fail --prefix \"{time} [{name}]\" -n modules,res \"yarn build:module_system\" \"yarn build:res\" && concurrently --kill-others-on-fail --prefix \"{time} [{name}]\" -n res,element-js \"yarn start:res\" \"yarn start:js\"",
         "start:https": "concurrently --kill-others-on-fail --prefix \"{time} [{name}]\" -n res,element-js \"yarn start:res\" \"yarn start:js --server-type https\"",
         "start:res": "ts-node scripts/copy-res.ts -w",
-        "start:js": "webpack serve --output-path webapp --output-filename=bundles/_dev_/[name].js --output-chunk-filename=bundles/_dev_/[name].js --mode development",
+        "start:js": "webpack serve --output-path webapp --output-filename=bundles/_dev_/\\[name\\].js --output-chunk-filename=bundles/_dev_/\\[name\\].js --mode development",
         "lint": "yarn lint:types && yarn lint:js && yarn lint:style && yarn lint:workflows",
         "lint:js": "eslint --max-warnings 0 src test playwright module_system && prettier --check .",
         "lint:js-fix": "prettier --log-level=warn --write . && eslint --fix src test playwright module_system",
@@ -76,7 +76,8 @@
         "jwt-decode": "4.0.0",
         "caniuse-lite": "1.0.30001690",
         "wrap-ansi-cjs": "npm:wrap-ansi@^7.0.0",
-        "wrap-ansi": "npm:wrap-ansi@^7.0.0"
+        "wrap-ansi": "npm:wrap-ansi@^7.0.0",
+        "@vector-im/matrix-wysiwyg": "portal:/home/robin/code/element-web/matrix-wysiwyg"
     },
     "dependencies": {
         "@babel/runtime": "^7.12.5",
@@ -89,9 +90,10 @@
         "@matrix-org/spec": "^1.7.0",
         "@sentry/browser": "^8.0.0",
         "@types/png-chunks-extract": "^1.0.2",
+        "@types/react-virtualized": "^9.21.30",
         "@vector-im/compound-design-tokens": "^2.1.0",
         "@vector-im/compound-web": "^7.5.0",
-        "@vector-im/matrix-wysiwyg": "2.38.0",
+        "@vector-im/matrix-wysiwyg": "patch:@vector-im/matrix-wysiwyg@npm%3A2.38.0#~/.yarn/patches/@vector-im-matrix-wysiwyg-npm-2.38.0-a62d7a6952.patch",
         "@zxcvbn-ts/core": "^3.0.4",
         "@zxcvbn-ts/language-common": "^3.0.4",
         "@zxcvbn-ts/language-en": "^3.0.2",
@@ -143,6 +145,7 @@
         "react-dom": "^18.3.1",
         "react-focus-lock": "^2.5.1",
         "react-transition-group": "^4.4.1",
+        "react-virtualized": "^9.22.5",
         "rfc4648": "^1.4.0",
         "sanitize-filename": "^1.6.3",
         "sanitize-html": "2.14.0",
@@ -150,9 +153,7 @@
         "temporal-polyfill": "^0.2.5",
         "ua-parser-js": "^1.0.2",
         "uuid": "^11.0.0",
-        "what-input": "^5.2.10",
-        "@types/react-virtualized": "^9.21.30",
-        "react-virtualized": "^9.22.5"
+        "what-input": "^5.2.10"
     },
     "devDependencies": {
         "@action-validator/cli": "^0.6.0",
@@ -303,5 +304,6 @@
     },
     "engines": {
         "node": ">=20.0.0"
-    }
+    },
+    "packageManager": "yarn@4.6.0"
 }
